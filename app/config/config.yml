@@ -28,3 +28,8 @@ framework:
 twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
+
+
+vb_github_search:
+    username: '%vb_github_search_username%'
+    token: '%vb_github_search_token%'

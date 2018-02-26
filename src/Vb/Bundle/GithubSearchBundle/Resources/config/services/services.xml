@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="vb_github_search.github_search_handler"
+                 class="Vb\Bundle\GithubSearchBundle\Service\GithubSearchHandler">
+            <argument type="service">
+                <service class="GuzzleHttp\Client">
+                    <argument type="collection">
+                        <argument key="base_uri">https://api.github.com/search</argument>
+                        <argument key="auth" type="collection">
+                            <argument>%vb_github_search.auth.username%</argument>
+                            <argument>%vb_github_search.auth.token%</argument>
+                        </argument>
+                    </argument>
+                </service>
+            </argument>
+        </service>
+    </services>
+</container>

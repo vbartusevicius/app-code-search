@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="vb_code_search.normalizer.code_filter"
+                 class="Vb\Bundle\CodeSearchBundle\Normalizer\CodeFilterNormalizer">
+        </service>
+
+        <service id="vb_code_search.normalizer.found_item"
+                 class="Vb\Bundle\CodeSearchBundle\Normalizer\FoundItemNormalizer">
+        </service>
+
+        <service id="vb_code_search.normalizer.found_items_list"
+                 class="Paysera\Component\Serializer\Normalizer\ResultNormalizer"
+                 parent="paysera_rest.normalizer.items_result">
+            <argument type="service" id="vb_code_search.normalizer.found_item"/>
+        </service>
+    </services>
+</container>

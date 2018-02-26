@@ -15,10 +15,10 @@ class AppKernel extends Kernel
             new Symfony\Bundle\MonologBundle\MonologBundle(),
             new Sensio\Bundle\FrameworkExtraBundle\SensioFrameworkExtraBundle(),
 
-            new JMS\SerializerBundle\JMSSerializerBundle(),
-            new FOS\RestBundle\FOSRestBundle(),
+            new Paysera\Bundle\RestBundle\PayseraRestBundle(),
 
             new Vb\Bundle\CodeSearchBundle\VbCodeSearchBundle(),
+            new Vb\Bundle\GithubSearchBundle\VbGithubSearchBundle(),
         ];
 
         if (in_array($this->getEnvironment(), ['dev', 'test'], true)) {

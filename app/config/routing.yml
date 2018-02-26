@@ -1,7 +1,3 @@
 vb_code_search:
     resource: "@VbCodeSearchBundle/Resources/config/routing.xml"
     prefix:   /
-
-app:
-    resource: '@AppBundle/Controller/'
-    type: annotation

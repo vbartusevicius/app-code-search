@@ -1,0 +1,25 @@
+<?xml version="1.0" ?>
+
+<container xmlns="http://symfony.com/schema/dic/services"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
+
+    <services>
+        <service id="vb_code_search.api.search"
+                 class="Paysera\Bundle\RestBundle\RestApi">
+            <tag name="paysera_rest.api" api_key="vb_code_search"/>
+            <argument type="service" id="service_container"/>
+            <argument type="service" id="logger"/>
+
+            <call method="addRequestQueryMapper">
+                <argument>vb_code_search.normalizer.code_filter</argument>
+                <argument>vb_code_search.controller.search_api:searchCode</argument>
+                <argument>filter</argument>
+            </call>
+            <call method="addResponseMapper">
+                <argument>vb_code_search.normalizer.found_items_list</argument>
+                <argument>b_code_search.controller.search_api:searchCode</argument>
+            </call>
+        </service>
+    </services>
+</container>
