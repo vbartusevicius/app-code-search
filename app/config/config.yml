@@ -13,7 +13,7 @@ framework:
         strict_requirements: ~
     form: ~
     csrf_protection: ~
-    validation: { enable_annotations: false }
+    validation: { enabled: true }
     default_locale: '%locale%'
     trusted_hosts: ~
     session:
@@ -30,6 +30,7 @@ twig:
     strict_variables: '%kernel.debug%'
 
 
-vb_github_search:
-    username: '%vb_github_search_username%'
-    token: '%vb_github_search_token%'
+vb_code_search:
+    github:
+        username: '%vb_github_search_username%'
+        token: '%vb_github_search_token%'

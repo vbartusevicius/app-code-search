@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<constraint-mapping xmlns="http://symfony.com/schema/dic/constraint-mapping"
+                    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                    xsi:schemaLocation="http://symfony.com/schema/dic/constraint-mapping http://symfony.com/schema/dic/constraint-mapping/constraint-mapping-1.0.xsd">
+
+    <class name="Vb\Bundle\CodeSearchBundle\Entity\CodeFilter">
+        <property name="term">
+            <constraint name="NotBlank"/>
+        </property>
+    </class>
+    
+    <class name="Vb\Bundle\CodeSearchBundle\Entity\Filter">
+        <constraint name="Vb\Bundle\CodeSearchBundle\Validation\Constraint\OrderDirectionConstraint">
+            <option name="groups">
+                <value>Github</value>
+            </option>
+        </constraint>
+        <property name="page">
+            <constraint name="Type">
+                <option name="type">numeric</option>
+            </constraint>
+        </property>
+        <property name="perPage">
+            <constraint name="Type">
+                <option name="type">numeric</option>
+            </constraint>
+        </property>
+        <property name="orderDirection">
+            <constraint name="Choice">
+                <option name="choices">
+                    <value>asc</value>
+                    <value>desc</value>
+                </option>
+            </constraint>
+        </property>
+        <property name="orderBy">
+            <constraint name="Choice">
+                <option name="choices">
+                    <value>indexed</value>
+                </option>
+                <option name="groups">
+                    <value>Github</value>
+                </option>
+            </constraint>
+        </property>
+    </class>
+</constraint-mapping>

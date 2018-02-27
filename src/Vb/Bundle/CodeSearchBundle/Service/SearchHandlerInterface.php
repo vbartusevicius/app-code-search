@@ -1,6 +1,6 @@
 <?php
 
-namespace Vb\Bundle\CodeSearchBundle\Service\SearchHandler;
+namespace Vb\Bundle\CodeSearchBundle\Service;
 
 use Paysera\Component\Serializer\Entity\Result;
 use Vb\Bundle\CodeSearchBundle\Entity\CodeFilter;
@@ -8,8 +8,8 @@ use Vb\Bundle\CodeSearchBundle\Entity\CodeFilter;
 interface SearchHandlerInterface
 {
     /**
-     * @param CodeFilter $codeFilter
+     * @param CodeFilter $filter
      * @return Result
      */
-    public function searchCode(CodeFilter $codeFilter);
+    public function searchCode(CodeFilter $filter);
 }

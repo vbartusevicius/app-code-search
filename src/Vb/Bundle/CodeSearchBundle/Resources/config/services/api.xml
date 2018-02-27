@@ -15,10 +15,14 @@
                 <argument>vb_code_search.normalizer.code_filter</argument>
                 <argument>vb_code_search.controller.search_api:searchCode</argument>
                 <argument>filter</argument>
+                <argument type="collection">
+                    <argument>Default</argument>
+                    <argument>Github</argument>
+                </argument>
             </call>
             <call method="addResponseMapper">
                 <argument>vb_code_search.normalizer.found_items_list</argument>
-                <argument>b_code_search.controller.search_api:searchCode</argument>
+                <argument>vb_code_search.controller.search_api:searchCode</argument>
             </call>
         </service>
     </services>

@@ -2,8 +2,6 @@
 
 namespace Vb\Bundle\CodeSearchBundle\Entity;
 
-use Paysera\Component\Serializer\Entity\Filter;
-
 class CodeFilter extends Filter
 {
     private $term;

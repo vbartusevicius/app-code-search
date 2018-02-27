@@ -8,5 +8,7 @@
         <import resource="services/controllers.xml"/>
         <import resource="services/normalizers.xml"/>
         <import resource="services/api.xml"/>
+        <import resource="services/search_handlers.xml"/>
+        <import resource="services/services.xml"/>
     </imports>
 </container>

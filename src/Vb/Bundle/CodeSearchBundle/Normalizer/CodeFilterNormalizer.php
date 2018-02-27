@@ -2,7 +2,6 @@
 
 namespace Vb\Bundle\CodeSearchBundle\Normalizer;
 
-use Paysera\Component\Serializer\Normalizer\FilterNormalizer;
 use Vb\Bundle\CodeSearchBundle\Entity\CodeFilter;
 
 class CodeFilterNormalizer extends FilterNormalizer
@@ -16,7 +15,7 @@ class CodeFilterNormalizer extends FilterNormalizer
     {
         $filter = new CodeFilter();
 
-        $this->mapBaseKeys($data, $filter);
+        $this->mapBaseKeys($filter, $data);
 
         if (isset($data['term'])) {
             $filter->setTerm($data['term']);

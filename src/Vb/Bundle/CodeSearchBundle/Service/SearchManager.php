@@ -2,11 +2,19 @@
 
 namespace Vb\Bundle\CodeSearchBundle\Service;
 
-use Vb\Bundle\CodeSearchBundle\Service\SearchHandler\SearchHandlerInterface;
+use Vb\Bundle\CodeSearchBundle\Entity\CodeFilter;
 
 class SearchManager
 {
-    public function __construct(SearchHandlerInterface $codeProvider)
+    private $searchHandler;
+
+    public function __construct(SearchHandlerInterface $searchHandler)
     {
+        $this->searchHandler = $searchHandler;
+    }
+
+    public function searchCode(CodeFilter $filter)
+    {
+        return $this->searchHandler->searchCode($filter);
     }
 }

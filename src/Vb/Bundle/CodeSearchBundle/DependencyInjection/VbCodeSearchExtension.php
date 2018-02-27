@@ -22,6 +22,10 @@ class VbCodeSearchExtension extends Extension
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
 
+        $container->setParameter('vb_github_search.auth.username', $config['github']['username']);
+        $container->setParameter('vb_github_search.auth.token', $config['github']['token']);
+
+
         $loader = new Loader\XmlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.xml');
     }

@@ -5,10 +5,9 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="vb_code_search.controller.search_api"
-                 class="Vb\Bundle\CodeSearchBundle\Controller\SearchApiController">
-            <argument type="service" id="vb_code_search.search_manager"/>
-            <argument type="service" id="logger"/>
+        <service id="vb_code_search.search_manager"
+                 class="Vb\Bundle\CodeSearchBundle\Service\SearchManager">
+            <argument type="service" id="vb_github_search.github.search_handler"/>
         </service>
     </services>
 </container>

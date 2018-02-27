@@ -13,10 +13,17 @@
                  class="Vb\Bundle\CodeSearchBundle\Normalizer\FoundItemNormalizer">
         </service>
 
+        <service id="vb_code_search.normalizer.metadata"
+                 class="Vb\Bundle\CodeSearchBundle\Entity\MetadataNormalizer">
+        </service>
+
         <service id="vb_code_search.normalizer.found_items_list"
-                 class="Paysera\Component\Serializer\Normalizer\ResultNormalizer"
-                 parent="paysera_rest.normalizer.items_result">
+                 class="Paysera\Component\Serializer\Normalizer\ResultNormalizer">
+            <argument>items</argument>
             <argument type="service" id="vb_code_search.normalizer.found_item"/>
+            <call method="setMetadataNormalizer">
+                <argument type="service" id="vb_code_search.normalizer.metadata"/>
+            </call>
         </service>
     </services>
 </container>

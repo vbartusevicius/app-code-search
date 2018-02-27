@@ -4,7 +4,5 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xsi:schemaLocation="http://symfony.com/schema/routing http://symfony.com/schema/routing/routing-1.0.xsd">
 
-    <import resource="routing/rest_v1.xml" prefix="/rest/v1/search">
-        <default key="_controller">vb_code_search.controller.search_api:</default>
-    </import>
+    <import resource="routing/rest_v1.xml" prefix="/rest/v1/search"/>
 </routes>
