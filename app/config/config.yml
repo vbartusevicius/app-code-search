@@ -31,6 +31,7 @@ twig:
 
 
 vb_code_search:
+    search_handler: vb_code_search.search_handler.github
     github:
         username: '%vb_github_search_username%'
         token: '%vb_github_search_token%'

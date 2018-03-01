@@ -13,14 +13,15 @@ use Vb\Bundle\CodeSearchBundle\Exception\SearchHandlerException;
 
 class GithubClient
 {
-    const MAX_PER_PAGE = 100;
-
     private $client;
+    private $maxPerPage;
 
     public function __construct(
-        ClientInterface $client
+        ClientInterface $client,
+        int $maxPerPage
     ) {
         $this->client = $client;
+        $this->maxPerPage = $maxPerPage;
     }
 
     /**
@@ -58,27 +59,28 @@ class GithubClient
     {
         $itemsLeft = $filter->getPerPage();
         $copy = clone $filter;
-        $filteredUri = sprintf('%s&%s', $uri, $this->buildFilter($copy));
 
         $total = 0;
         $items = [];
 
         do {
+            if ($itemsLeft > $this->maxPerPage) {
+                $copy->setPerPage($this->maxPerPage);
+            } else {
+                $copy->setPerPage($itemsLeft);
+            }
+            $filteredUri = sprintf('%s&%s', $uri, $this->buildFilter($copy));
+
             $response = $this->client->request($method, $filteredUri);
             $data = json_decode($response->getBody()->getContents(), true);
 
             $total = $data['total_count'];
-            $items += $data['items'];
+            $items = array_merge($items, $data['items']);
 
             $copy->setPage($copy->getPage() + 1);
             $copy->setPerPage($copy->getPerPage());
 
-            if ($itemsLeft > self::MAX_PER_PAGE) {
-                $copy->setPerPage(self::MAX_PER_PAGE);
-            } else {
-                $copy->setPerPage($itemsLeft);
-            }
-            $itemsLeft -= self::MAX_PER_PAGE;
+            $itemsLeft -= $this->maxPerPage;
         } while ($itemsLeft > 0);
 
         return ['total' => $total, 'items' => $items];

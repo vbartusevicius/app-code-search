@@ -14,7 +14,7 @@
         </service>
 
         <service id="vb_code_search.normalizer.metadata"
-                 class="Vb\Bundle\CodeSearchBundle\Entity\MetadataNormalizer">
+                 class="Vb\Bundle\CodeSearchBundle\Normalizer\MetadataNormalizer">
         </service>
 
         <service id="vb_code_search.normalizer.found_items_list"

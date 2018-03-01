@@ -5,25 +5,27 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="vb_github_search.github.search_handler"
+        <service id="vb_code_search.search_handler.github"
                  class="Vb\Bundle\CodeSearchBundle\Service\Github\GithubSearchHandler">
-            <argument type="service" id="vb_github_search.github.client"/>
+            <argument type="service" id="vb_code_search.github.client"/>
             <argument type="service" id="vb_code_search.normalizer.found_item"/>
         </service>
 
-        <service id="vb_github_search.github.client"
-                 class="Vb\Bundle\CodeSearchBundle\Service\Github\GithubClient">
+        <service id="vb_code_search.github.client"
+                 class="Vb\Bundle\CodeSearchBundle\Service\Github\GithubClient"
+                 lazy="true">
             <argument type="service">
                 <service class="GuzzleHttp\Client">
                     <argument type="collection">
                         <argument key="base_uri">https://api.github.com/search/</argument>
                         <argument key="auth" type="collection">
-                            <argument>%vb_github_search.auth.username%</argument>
-                            <argument>%vb_github_search.auth.token%</argument>
+                            <argument>%vb_code_search.github.auth.username%</argument>
+                            <argument>%vb_code_search.github.auth.token%</argument>
                         </argument>
                     </argument>
                 </service>
             </argument>
+            <argument>100</argument>
         </service>
     </services>
 </container>

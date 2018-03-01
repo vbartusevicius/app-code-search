@@ -7,7 +7,7 @@
     <services>
         <service id="vb_code_search.search_manager"
                  class="Vb\Bundle\CodeSearchBundle\Service\SearchManager">
-            <argument type="service" id="vb_github_search.github.search_handler"/>
+            <argument/>
         </service>
     </services>
 </container>

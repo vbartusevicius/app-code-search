@@ -1,9 +1,10 @@
 <?php
 
-namespace Vb\Bundle\CodeSearchBundle\Entity;
+namespace Vb\Bundle\CodeSearchBundle\Normalizer;
 
 use Paysera\Component\Serializer\Entity\Result;
 use Paysera\Component\Serializer\Normalizer\NormalizerInterface;
+use Vb\Bundle\CodeSearchBundle\Entity\Filter;
 
 class MetadataNormalizer implements NormalizerInterface
 {
@@ -18,9 +19,9 @@ class MetadataNormalizer implements NormalizerInterface
         $filter = $result->getFilter();
 
         return [
-            'total' => $result->getTotalCount(),
-            'page' => $filter->getPage(),
-            'per_page' => $filter->getPerPage(),
+            'total' => (int) $result->getTotalCount(),
+            'page' => (int) $filter->getPage(),
+            'per_page' => (int) $filter->getPerPage(),
         ];
     }
 }

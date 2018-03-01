@@ -22,6 +22,7 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
+                ->scalarNode('search_handler')->cannotBeEmpty()->end()
                 ->arrayNode('github')
                     ->children()
                         ->scalarNode('username')->cannotBeEmpty()->end()
