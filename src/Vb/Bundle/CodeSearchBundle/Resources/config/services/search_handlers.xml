@@ -14,18 +14,19 @@
         <service id="vb_code_search.github.client"
                  class="Vb\Bundle\CodeSearchBundle\Service\Github\GithubClient"
                  lazy="true">
-            <argument type="service">
-                <service class="GuzzleHttp\Client">
-                    <argument type="collection">
-                        <argument key="base_uri">https://api.github.com/search/</argument>
-                        <argument key="auth" type="collection">
-                            <argument>%vb_code_search.github.auth.username%</argument>
-                            <argument>%vb_code_search.github.auth.token%</argument>
-                        </argument>
-                    </argument>
-                </service>
+            <argument type="service" id="vb_code_search.github.guzzle_client">
             </argument>
             <argument>100</argument>
+        </service>
+
+        <service id="vb_code_search.github.guzzle_client" class="GuzzleHttp\Client">
+            <argument type="collection">
+                <argument key="base_uri">https://api.github.com/search/</argument>
+                <argument key="auth" type="collection">
+                    <argument>%vb_code_search.github.auth.username%</argument>
+                    <argument>%vb_code_search.github.auth.token%</argument>
+                </argument>
+            </argument>
         </service>
     </services>
 </container>
