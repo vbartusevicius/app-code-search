@@ -40,3 +40,6 @@ vb_code_search:
       * `total` - total items count
       * `page` - page number
       * `per_page` - items per page
+
+#### Run tests
+`./bin/phpunit`
